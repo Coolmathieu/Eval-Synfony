@@ -30,6 +30,15 @@
                 {% if citation.dateAjout %}
                     <small>ajouté le : ({{ citation.dateAjout|date('d/m/Y') }})</small>
                 {% endif %}
+                {% if citation.langue %}
+                    <small> Langue : {{ citation.langue }}</small>
+                {% endif %}
+                {% if citation.tags is not empty %}
+                    <small>Tags : {{ citation.tags|join(', ') }}</small>
+                {% endif %}
+                <a href="{{ path('app_citation_edit', {'id': citation.id}) }}">Modifier</a>
+                <a href="{{ path('app_citation_delete', {'id': citation.id}) }}">Supprimer</a>
+
             </li>
         {% else %}
             <li>Aucune citation disponible pour l'instant</li>

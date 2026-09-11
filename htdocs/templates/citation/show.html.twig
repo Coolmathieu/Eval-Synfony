@@ -29,6 +29,9 @@
                 {% if citation.dateAjout %}
                     <small>ajouté le : ({{ citation.dateAjout|date('d/m/Y') }})</small>
                 {% endif %}
+                <a href="{{ path('app_citation_edit', {'id': citation.id}) }}">Modifier</a>
+                <a href="{{ path('app_citation_delete', {'id': citation.id}) }}">Supprimer</a>
+
             </li>
     </ul>
 {% endblock %}

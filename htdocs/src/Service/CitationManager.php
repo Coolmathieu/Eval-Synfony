@@ -17,4 +17,13 @@ class CitationManager
         $this->entityManager->persist($citation);
         $this->entityManager->flush();
     }
+    public function update(): void
+    {
+        $this->entityManager->flush();
+    }
+    public function remove(Citation $citation): void
+    {
+        $this->entityManager->remove($citation);
+        $this->entityManager->flush();
+    }
 }

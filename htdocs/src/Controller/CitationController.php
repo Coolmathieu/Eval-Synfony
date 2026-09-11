@@ -59,5 +59,23 @@ final class CitationController extends AbstractController
             'citation' => $Citation,
         ]);
     }
+    #[Route('/citation/edit/{id}', name: 'app_citation_edit', methods: ['GET', 'POST'])]
+    public function edit(Citation $citation, Request $request, CitationManager $citationManager): Response
+    {
+        $form = $this->createForm(CitationType::class, $citation);
+        $form->handleRequest($request);
 
+        if ($form->isSubmitted() && $form->isValid()) {
+            $citationManager->update();
+
+            $this->addFlash('success', 'La citation a bien été modifiée !');
+
+            return $this->redirectToRoute('app_citation_index');
+        }
+
+        return $this->render('citation/edit.html.twig', [
+            'form' => $form,
+            'citation' => $citation,
+        ]);
+    }
 }

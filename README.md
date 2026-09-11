@@ -1,2 +1,0 @@
-# Eval-Synfony
-Eval Synfony

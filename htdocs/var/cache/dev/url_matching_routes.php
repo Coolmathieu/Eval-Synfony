@@ -14,11 +14,15 @@ return [
     [ // $regexpList
         0 => '{^(?'
                 .'|/_error/(\\d+)(?:\\.([^/]++))?(*:35)'
+                .'|/delete/([^/]++)(*:58)'
+                .'|/(\\d+)(*:71)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
-        35 => [
-            [['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null],
+        35 => [[['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null]],
+        58 => [[['_route' => 'app_citation_delete', '_controller' => 'App\\Controller\\CitationController::delete'], ['id'], ['POST' => 0, 'GET' => 1], null, false, true, null]],
+        71 => [
+            [['_route' => 'app_citation_show', '_controller' => 'App\\Controller\\CitationController::show'], ['id'], ['GET' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

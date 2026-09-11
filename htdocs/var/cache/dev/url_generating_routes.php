@@ -6,6 +6,10 @@ return [
     '_preview_error' => [['code', '_format'], ['_controller' => 'error_controller::preview', '_format' => 'html'], ['code' => '\\d+'], [['variable', '.', '[^/]++', '_format', true], ['variable', '/', '\\d+', 'code', true], ['text', '/_error']], [], [], []],
     'app_citation_index' => [[], ['_controller' => 'App\\Controller\\CitationController::index'], [], [['text', '/citation']], [], [], []],
     'app_citation_new' => [[], ['_controller' => 'App\\Controller\\CitationController::new'], [], [['text', '/citation/new']], [], [], []],
+    'app_citation_delete' => [['id'], ['_controller' => 'App\\Controller\\CitationController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/delete']], [], [], []],
+    'app_citation_show' => [['id'], ['_controller' => 'App\\Controller\\CitationController::show'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true]], [], [], []],
     'App\Controller\CitationController::index' => [[], ['_controller' => 'App\\Controller\\CitationController::index'], [], [['text', '/citation']], [], [], []],
     'App\Controller\CitationController::new' => [[], ['_controller' => 'App\\Controller\\CitationController::new'], [], [['text', '/citation/new']], [], [], []],
+    'App\Controller\CitationController::delete' => [['id'], ['_controller' => 'App\\Controller\\CitationController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/delete']], [], [], []],
+    'App\Controller\CitationController::show' => [['id'], ['_controller' => 'App\\Controller\\CitationController::show'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true]], [], [], []],
 ];

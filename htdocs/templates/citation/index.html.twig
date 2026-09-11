@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Citations{% endblock %}
+
+{% block body %}
+    <h1>Liste des Citations</h1>
+
+    <ul>
+        {% for citation in citations %}
+            <li>
+                <strong>« {{ citation.texte }} »</strong>
+                {% if citation.auteur %}
+                    — <em>{{ citation.auteur }}</em>
+                {% endif %}
+                {% if citation.dateCitation %}
+                    <p>({{ citation.dateCitation|date('d/m/Y') }})</p>
+                {% endif %}
+                {% if citation.genre %}
+                    <small>({{ citation.genre.value }})</small>
+                {% endif %}
+                {% if citation.source %}
+                    <small>({{ citation.source }})</small>
+                {% endif %}
+                {% if citation.dateAjout %}
+                    <small> ajouté le : ({{ citation.dateAjout|date('d/m/Y') }})</small>
+                {% endif %}
+
+
+                {% if citation.type %}
+                    <small>({{ citation.type }})</small>
+                {% endif %}
+            </li>
+        {% else %}
+            <li>Aucune citation disponible pour l'instant</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

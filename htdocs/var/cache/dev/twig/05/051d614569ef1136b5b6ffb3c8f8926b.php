@@ -85,98 +85,92 @@ class __TwigTemplate_97159334c4d5e2488e2fffc095851451 extends Template
         // line 6
         yield "    <h1>Liste des Citations</h1>
 
-    <a href=\"";
-        // line 8
-        yield (string) $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_citation_create");
-        yield "\">Ajouter une citation de test</a>
-
     <ul>
         ";
-        // line 11
+        // line 9
         $context['_parent'] = $context;
-        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["citations"]) || array_key_exists("citations", $context) ? $context["citations"] : (function () { throw new RuntimeError('Variable "citations" does not exist.', 11, $this->source); })()));
+        $context['_seq'] = CoreExtension::ensureTraversable((isset($context["citations"]) || array_key_exists("citations", $context) ? $context["citations"] : (function () { throw new RuntimeError('Variable "citations" does not exist.', 9, $this->source); })()));
         $context['_iterated'] = false;
         foreach ($context['_seq'] as $context["_key"] => $context["citation"]) {
-            // line 12
+            // line 10
             yield "            <li>
                 <strong>« ";
-            // line 13
-            yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "texte", [], "any", false, false, false, 13), "html", null, true);
+            // line 11
+            yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "texte", [], "any", false, false, false, 11), "html", null, true);
             yield " »</strong>
                 ";
-            // line 14
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "auteur", [], "any", false, false, false, 14)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 15
+            // line 12
+            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "auteur", [], "any", false, false, false, 12)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 13
                 yield "                    — <em>";
-                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "auteur", [], "any", false, false, false, 15), "html", null, true);
+                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "auteur", [], "any", false, false, false, 13), "html", null, true);
                 yield "</em>
                 ";
             }
-            // line 17
+            // line 15
             yield "                ";
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "genre", [], "any", false, false, false, 17)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 18
+            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "dateCitation", [], "any", false, false, false, 15)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 16
+                yield "                    <p>(";
+                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "dateCitation", [], "any", false, false, false, 16), "d/m/Y"), "html", null, true);
+                yield ")</p>
+                ";
+            }
+            // line 18
+            yield "                ";
+            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "genre", [], "any", false, false, false, 18)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 19
                 yield "                    <small>(";
-                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "genre", [], "any", false, false, false, 18), "value", [], "any", false, false, false, 18), "html", null, true);
+                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "genre", [], "any", false, false, false, 19), "value", [], "any", false, false, false, 19), "html", null, true);
                 yield ")</small>
                 ";
             }
-            // line 20
+            // line 21
             yield "                ";
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "source", [], "any", false, false, false, 20)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 21
+            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "source", [], "any", false, false, false, 21)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 22
                 yield "                    <small>(";
-                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "source", [], "any", false, false, false, 21), "html", null, true);
+                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "source", [], "any", false, false, false, 22), "html", null, true);
                 yield ")</small>
                 ";
             }
-            // line 23
+            // line 24
             yield "                ";
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "dateAjout", [], "any", false, false, false, 23)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 24
-                yield "                    <small>(";
-                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "dateAjout", [], "any", false, false, false, 24), "d/m/Y"), "html", null, true);
-                yield ")</small> ";
+            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "dateAjout", [], "any", false, false, false, 24)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
                 // line 25
-                yield "                ";
-            }
-            // line 26
-            yield "
-                ";
-            // line 27
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "dateCitation", [], "any", false, false, false, 27)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 28
-                yield "                    <small>(";
-                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "dateCitation", [], "any", false, false, false, 28), "d/m/Y"), "html", null, true);
-                yield ")</small> ";
-                // line 29
-                yield "                ";
-            }
-            // line 30
-            yield "                ";
-            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "type", [], "any", false, false, false, 30)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
-                // line 31
-                yield "                    <small>(";
-                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "type", [], "any", false, false, false, 31), "value", [], "any", false, false, false, 31), "html", null, true);
+                yield "                    <small> ajouté le : (";
+                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape($this->extensions['Twig\Extension\CoreExtension']->formatDate(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "dateAjout", [], "any", false, false, false, 25), "d/m/Y"), "html", null, true);
                 yield ")</small>
                 ";
             }
-            // line 33
+            // line 27
+            yield "
+
+                ";
+            // line 29
+            if ((($tmp = CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "type", [], "any", false, false, false, 29)) && $tmp instanceof Markup ? (string) $tmp : $tmp)) {
+                // line 30
+                yield "                    <small>(";
+                yield (string) $this->env->getRuntime('Twig\Runtime\EscaperRuntime')->escape(CoreExtension::getAttribute($this->env, $this->source, $context["citation"], "type", [], "any", false, false, false, 30), "html", null, true);
+                yield ")</small>
+                ";
+            }
+            // line 32
             yield "            </li>
         ";
             $context['_iterated'] = true;
         }
-        // line 34
+        // line 33
         if (!$context['_iterated']) {
-            // line 35
-            yield "            <li>Aucune citation enregistrée pour le moment.</li>
+            // line 34
+            yield "            <li>Aucune citation disponible pour l\x27instant</li>
         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_key'], $context['citation'], $context['_parent'], $context['_iterated']);
         $context = array_intersect_key($context, $_parent);
         $context += $_parent;
-        // line 37
+        // line 36
         yield "    </ul>
 ";
         
@@ -206,7 +200,7 @@ class __TwigTemplate_97159334c4d5e2488e2fffc095851451 extends Template
      */
     public function getDebugInfo(): array
     {
-        return array (  180 => 37,  172 => 35,  170 => 34,  165 => 33,  159 => 31,  156 => 30,  153 => 29,  149 => 28,  147 => 27,  144 => 26,  141 => 25,  137 => 24,  134 => 23,  128 => 21,  125 => 20,  119 => 18,  116 => 17,  110 => 15,  108 => 14,  104 => 13,  101 => 12,  96 => 11,  90 => 8,  86 => 6,  76 => 5,  59 => 3,  42 => 1,);
+        return array (  174 => 36,  166 => 34,  164 => 33,  159 => 32,  153 => 30,  151 => 29,  147 => 27,  141 => 25,  138 => 24,  132 => 22,  129 => 21,  123 => 19,  120 => 18,  114 => 16,  111 => 15,  105 => 13,  103 => 12,  99 => 11,  96 => 10,  91 => 9,  86 => 6,  76 => 5,  59 => 3,  42 => 1,);
     }
 
     public function getSourceContext(): Source
@@ -218,14 +212,15 @@ class __TwigTemplate_97159334c4d5e2488e2fffc095851451 extends Template
 {% block body %}
     <h1>Liste des Citations</h1>
 
-    <a href=\"{{ path(\x27app_citation_create\x27) }}\">Ajouter une citation de test</a>
-
     <ul>
         {% for citation in citations %}
             <li>
                 <strong>« {{ citation.texte }} »</strong>
                 {% if citation.auteur %}
                     — <em>{{ citation.auteur }}</em>
+                {% endif %}
+                {% if citation.dateCitation %}
+                    <p>({{ citation.dateCitation|date(\x27d/m/Y\x27) }})</p>
                 {% endif %}
                 {% if citation.genre %}
                     <small>({{ citation.genre.value }})</small>
@@ -234,18 +229,16 @@ class __TwigTemplate_97159334c4d5e2488e2fffc095851451 extends Template
                     <small>({{ citation.source }})</small>
                 {% endif %}
                 {% if citation.dateAjout %}
-                    <small>({{ citation.dateAjout|date(\x27d/m/Y\x27) }})</small> {# Date : utiliser le filtre |date #}
+                    <small> ajouté le : ({{ citation.dateAjout|date(\x27d/m/Y\x27) }})</small>
                 {% endif %}
 
-                {% if citation.dateCitation %}
-                    <small>({{ citation.dateCitation|date(\x27d/m/Y\x27) }})</small> {# Date : utiliser le filtre |date #}
-                {% endif %}
+
                 {% if citation.type %}
-                    <small>({{ citation.type.value }})</small>
+                    <small>({{ citation.type }})</small>
                 {% endif %}
             </li>
         {% else %}
-            <li>Aucune citation enregistrée pour le moment.</li>
+            <li>Aucune citation disponible pour l\x27instant</li>
         {% endfor %}
     </ul>
 {% endblock %}

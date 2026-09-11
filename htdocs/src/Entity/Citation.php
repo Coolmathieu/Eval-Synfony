@@ -7,8 +7,8 @@ use App\Repository\CitationRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-#[ORM\Entity(repositoryClass: CitationRepository::class)]
 
+#[ORM\Entity(repositoryClass: CitationRepository::class)]
 class Citation
 {
     #[ORM\Id]
@@ -27,17 +27,17 @@ class Citation
     private ?string $texte = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank(message: "L'auteur est obligatoire, il faut ctédité les gens pardi.")]
+    #[Assert\NotBlank(message: "L'auteur est obligatoire, il faut créditer les gens pardi.")]
     #[Assert\Length(
         max: 255,
-        maxMessage: "Le nom de l'auteur ne peut pas dépasser {{ limit }} caractères. Réduit stp"
+        maxMessage: "Le nom de l'auteur ne peut pas dépasser {{ limit }} caractères. Réduis stp"
     )]
     private ?string $auteur = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(
         max: 255,
-        maxMessage: "La source ne peut pas dépasser {{ limit }} caractères. Réduit stp"
+        maxMessage: "La source ne peut pas dépasser {{ limit }} caractères. Réduis stp"
     )]
     private ?string $source = null;
 
@@ -47,7 +47,7 @@ class Citation
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     #[Assert\Type(
         type: \DateTimeInterface::class,
-        message: "La date saisie n'est pas valide. Arrète de mettre n'importe quoi"
+        message: "La date saisie n'est pas valide. Relis toi avant de valider la date.",
     )]
     private ?\DateTime $dateCitation = null;
 
@@ -58,9 +58,20 @@ class Citation
     #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(
         max: 255,
-        maxMessage: "Le type de la citation ne peut pas dépasser {{ limit }} caractères. Faite synthéique à un moment"
+        maxMessage: "Le type de la citation ne peut pas dépasser {{ limit }} caractères. Faites synthétique"
     )]
     private ?string $type = null;
+
+    #[ORM\Column(length: 10, options: ['default' => 'fr'])]
+    #[Assert\NotBlank(message: "Veuillez spécifier une langue.")]
+    #[Assert\Choice(
+        choices: ['fr', 'en', 'la', 'es', 'de'],
+        message: "Choisis une langue valide, on ne répartorie pas les citation dans tout les langue (fr, en, la, es, de)."
+    )]
+    private ?string $langue = 'fr';
+
+    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
+    private array $tags = [];
 
     public function __construct()
     {
@@ -152,6 +163,30 @@ class Citation
     public function setType(?string $type): static
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getLangue(): ?string
+    {
+        return $this->langue;
+    }
+
+    public function setLangue(string $langue): static
+    {
+        $this->langue = $langue;
+
+        return $this;
+    }
+
+    public function getTags(): array
+    {
+        return $this->tags;
+    }
+
+    public function setTags(?array $tags): static
+    {
+        $this->tags = $tags ?? [];
 
         return $this;
     }

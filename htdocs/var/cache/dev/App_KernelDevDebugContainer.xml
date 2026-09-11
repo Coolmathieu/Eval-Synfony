@@ -389,7 +389,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" priority="-50">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.ogSZt0H"/>
+      <argument type="service" id=".service_locator.YSGKWjT"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" priority="-100">controller.argument_value_resolver</tag>
@@ -1554,7 +1554,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.ogSZt0H"/>
+      <argument type="service" id=".service_locator.YSGKWjT"/>
     </service>
     <service id="debug.console.argument_resolver" class="Symfony\Component\Console\ArgumentResolver\TraceableArgumentResolver">
       <tag name="container.decorator" id="console.argument_resolver" inner="debug.console.argument_resolver.inner"/>
@@ -3672,7 +3672,20 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.ivvPU3l" method="withContext"/>
     </service>
-    <service id=".service_locator.ogSZt0H" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.RRerzxk" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="citation" type="service_closure" id=".errored..service_locator.RRerzxk.App\Entity\Citation"/>
+        <argument key="citationManager" type="service_closure" id="App\Service\CitationManager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.RRerzxk.App\Controller\CitationController::edit()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CitationController::edit()"/>
+      <argument>App\Controller\CitationController::edit()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.RRerzxk" method="withContext"/>
+    </service>
+    <service id=".service_locator.YSGKWjT" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
@@ -3683,12 +3696,14 @@
         <argument key="App\Controller\CitationController::new" type="service_closure" id=".service_locator.B2Er5xt.App\Controller\CitationController::new()"/>
         <argument key="App\Controller\CitationController::delete" type="service_closure" id=".service_locator.X4TbhiT.App\Controller\CitationController::delete()"/>
         <argument key="App\Controller\CitationController::show" type="service_closure" id=".service_locator.ivvPU3l.App\Controller\CitationController::show()"/>
+        <argument key="App\Controller\CitationController::edit" type="service_closure" id=".service_locator.RRerzxk.App\Controller\CitationController::edit()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.1vYpZ1B.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.1vYpZ1B.kernel::loadRoutes()"/>
         <argument key="App\Controller\CitationController:index" type="service_closure" id=".service_locator._ypopge.App\Controller\CitationController::index()"/>
         <argument key="App\Controller\CitationController:new" type="service_closure" id=".service_locator.B2Er5xt.App\Controller\CitationController::new()"/>
         <argument key="App\Controller\CitationController:delete" type="service_closure" id=".service_locator.X4TbhiT.App\Controller\CitationController::delete()"/>
         <argument key="App\Controller\CitationController:show" type="service_closure" id=".service_locator.ivvPU3l.App\Controller\CitationController::show()"/>
+        <argument key="App\Controller\CitationController:edit" type="service_closure" id=".service_locator.RRerzxk.App\Controller\CitationController::edit()"/>
       </argument>
     </service>
     <service id=".service_locator.nqEKT7G" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -4017,6 +4032,9 @@
     </service>
     <service id=".errored..service_locator.ivvPU3l.App\Entity\Citation" class="App\Entity\Citation">
       <tag name="container.error" message="Cannot autowire service &quot;.service_locator.ivvPU3l&quot;: it needs an instance of &quot;App\Entity\Citation&quot; but this type has been excluded because it's a Doctrine entity."/>
+    </service>
+    <service id=".errored..service_locator.RRerzxk.App\Entity\Citation" class="App\Entity\Citation">
+      <tag name="container.error" message="Cannot autowire service &quot;.service_locator.RRerzxk&quot;: it needs an instance of &quot;App\Entity\Citation&quot; but this type has been excluded because it's a Doctrine entity."/>
     </service>
     <service id=".console.command.dotenv_debug.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>debug:dotenv</argument>
@@ -4797,7 +4815,7 @@
     <service id="Twig\Environment" alias="twig"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.ryAvHi4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.ogSZt0H"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.YSGKWjT"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.W55Po6X"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
@@ -4812,6 +4830,7 @@
     <service id=".service_locator.H0NPMOX" alias=".service_locator.B2Er5xt"/>
     <service id=".service_locator.JrKCVS." alias=".service_locator.X4TbhiT"/>
     <service id=".service_locator.57gOfi9" alias=".service_locator.ivvPU3l"/>
+    <service id=".service_locator.blIqvjp" alias=".service_locator.RRerzxk"/>
     <service id=".service_locator.YyTAIYt" alias=".service_locator.TJNRSaV"/>
   </services>
 </container>

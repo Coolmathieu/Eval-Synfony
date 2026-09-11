@@ -8,8 +8,10 @@ return [
     'app_citation_new' => [[], ['_controller' => 'App\\Controller\\CitationController::new'], [], [['text', '/citation/new']], [], [], []],
     'app_citation_delete' => [['id'], ['_controller' => 'App\\Controller\\CitationController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/delete']], [], [], []],
     'app_citation_show' => [['id'], ['_controller' => 'App\\Controller\\CitationController::show'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true]], [], [], []],
+    'app_citation_edit' => [['id'], ['_controller' => 'App\\Controller\\CitationController::edit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/citation/edit']], [], [], []],
     'App\Controller\CitationController::index' => [[], ['_controller' => 'App\\Controller\\CitationController::index'], [], [['text', '/citation']], [], [], []],
     'App\Controller\CitationController::new' => [[], ['_controller' => 'App\\Controller\\CitationController::new'], [], [['text', '/citation/new']], [], [], []],
     'App\Controller\CitationController::delete' => [['id'], ['_controller' => 'App\\Controller\\CitationController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/delete']], [], [], []],
     'App\Controller\CitationController::show' => [['id'], ['_controller' => 'App\\Controller\\CitationController::show'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true]], [], [], []],
+    'App\Controller\CitationController::edit' => [['id'], ['_controller' => 'App\\Controller\\CitationController::edit'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/citation/edit']], [], [], []],
 ];

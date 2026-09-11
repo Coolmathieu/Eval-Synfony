@@ -5,29 +5,30 @@
 {% block body %}
     <h1>Liste des Citations</h1>
 
+    <a href="{{ path('app_citation_new') }}">Ajouter une citation</a>
+
     <ul>
         {% for citation in citations %}
             <li>
-                <strong>« {{ citation.texte }} »</strong>
-                {% if citation.auteur %}
-                    — <em>{{ citation.auteur }}</em>
-                {% endif %}
-                {% if citation.dateCitation %}
-                    <p>({{ citation.dateCitation|date('d/m/Y') }})</p>
-                {% endif %}
+                <strong>« {{ citation.texte }} »</strong> — <em>{{ citation.auteur }}</em>
+
                 {% if citation.genre %}
-                    <small>({{ citation.genre.value }})</small>
+                    <small> - {{ citation.genre.value }}</small>
                 {% endif %}
-                {% if citation.source %}
-                    <small>({{ citation.source }})</small>
-                {% endif %}
-                {% if citation.dateAjout %}
-                    <small> ajouté le : ({{ citation.dateAjout|date('d/m/Y') }})</small>
-                {% endif %}
-
-
                 {% if citation.type %}
                     <small>({{ citation.type }})</small>
+                {% endif %}
+
+                {% if citation.source %}
+                    <small>{{ citation.source }}</small>
+                {% endif %}
+
+                {% if citation.dateCitation %}
+                    <small>Citattion datant du {{ citation.dateCitation|date('d/m/Y') }}</small>
+                {% endif %}
+
+                {% if citation.dateAjout %}
+                    <small>ajouté le : ({{ citation.dateAjout|date('d/m/Y') }})</small>
                 {% endif %}
             </li>
         {% else %}

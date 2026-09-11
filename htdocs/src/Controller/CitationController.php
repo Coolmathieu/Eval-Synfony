@@ -9,13 +9,14 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-
+use Symfony\Component\HttpFoundation\Request;
+use App\Form\CitationType;
+use App\Service\CitationManager;
 final class CitationController extends AbstractController
 {
     #[Route('/citation', name: 'app_citation_index')]
     public function index(CitationRepository $citationRepository): Response
     {
-        // Récupération de toutes les citations via le Repository
         $citations = $citationRepository->findAll();
 
         return $this->render('citation/index.html.twig', [
@@ -23,16 +24,22 @@ final class CitationController extends AbstractController
         ]);
     }
 
-    #[Route('/citation/nouvelle', name: 'app_citation_create')]
-    public function create(EntityManagerInterface $entityManager): Response
+    #[Route('/citation/new', name: 'app_citation_new')]
+    public function new(Request $request, CitationManager $entityManager): Response
     {
-        // Instanciation de l'entité
         $citation = new Citation();
+        $form = $this->createForm(CitationType::class, $citation);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->save($citation);
 
-        // Enregistrement en base de données via l'EntityManager
-        $entityManager->persist($citation);
-        $entityManager->flush();
+            return $this->redirectToRoute('app_citation_index');
+        }
 
-        return $this->redirectToRoute('app_citation_index');
+        return $this->render('citation/new.html.twig', [
+            'form' => $form,
+        ]);
     }
+
+
 }

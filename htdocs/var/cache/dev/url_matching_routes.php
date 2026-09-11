@@ -9,8 +9,7 @@ return [
     false, // $matchHost
     [ // $staticRoutes
         '/citation' => [[['_route' => 'app_citation_index', '_controller' => 'App\\Controller\\CitationController::index'], null, null, null, false, false, null]],
-        '/citation/nouvelle' => [[['_route' => 'app_citation_create', '_controller' => 'App\\Controller\\CitationController::create'], null, null, null, false, false, null]],
-        '/citatione' => [[['_route' => 'app_citatione', '_controller' => 'App\\Controller\\CitationeController::index'], null, null, null, false, false, null]],
+        '/citation/new' => [[['_route' => 'app_citation_new', '_controller' => 'App\\Controller\\CitationController::new'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une citation{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+            color: #333;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .form-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-top: 0;
+            margin-bottom: 24px;
+            color: #1f2937;
+        }
+        /* Style global pour les éléments du formulaire Symfony */
+        .form-card div {
+            margin-bottom: 20px;
+        }
+        .form-card label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            color: #374151;
+        }
+        .form-card input[type="text"],
+        .form-card input[type="date"],
+        .form-card textarea,
+        .form-card select {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            color: #1f2937;
+            background-color: #f9fafb;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            box-sizing: border-box;
+        }
+        .form-card input:focus,
+        .form-card textarea:focus,
+        .form-card select:focus {
+            outline: none;
+            border-color: #4f46e5;
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        .btn-submit {
+            background-color: #4f46e5;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+        .btn-submit:hover {
+            background-color: #4338ca;
+        }
+        .form-error {
+            color: #dc2626;
+            font-size: 0.85rem;
+            margin-top: 6px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="form-container">
+        <a href="{{ path('app_citation_index') }}" class="back-link">&larr; Retour aux citations</a>
+
+        <div class="form-card">
+            <h1>Ajouter une citation</h1>
+
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+
+            <div class="mb-3">
+                {{ form_row(form.texte) }}
+            </div>
+            <div class="mb-3">
+                {{ form_row(form.auteur) }}
+            </div>
+            <div class="mb-3">
+                {{ form_row(form.genre) }}
+            </div>
+            <div class="mb-3">
+                {{ form_row(form.source) }}
+            </div>
+            <div class="mb-3">
+                {{ form_row(form.dateCitation) }}
+            </div>
+            <div class="mb-3">
+                {{ form_row(form.type) }}
+            </div>
+
+            <button type="submit" class="btn-submit">Enregistrer</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

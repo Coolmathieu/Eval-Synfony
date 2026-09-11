@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails de la Citation{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .citation-container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 0 20px;
+            font-family: system-ui, -apple-system, sans-serif;
+            color: #333;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .citation-card {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        }
+        .citation-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            color: #1f2937;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .citation-author {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4b5563;
+            margin-bottom: 24px;
+        }
+        .citation-details {
+            border-top: 1px solid #f3f4f6;
+            padding-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 24px;
+        }
+        .detail-item strong {
+            color: #374151;
+            display: block;
+            margin-bottom: 2px;
+        }
+        .badge {
+            background-color: #f3f4f6;
+            color: #374151;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+        .citation-actions {
+            border-top: 1px solid #f3f4f6;
+            padding-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+        .btn {
+            padding: 8px 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: background-color 0.2s;
+        }
+        .btn-edit {
+            background-color: #f59e0b;
+            color: white;
+        }
+        .btn-edit:hover {
+            background-color: #d97706;
+            color: white;
+        }
+        .btn-delete {
+            background-color: #ef4444;
+            color: white;
+        }
+        .btn-delete:hover {
+            background-color: #dc2626;
+            color: white;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="citation-container">
+        <a href="{{ path('app_citation_index') }}" class="back-link">← Retour à la liste</a>
+
+        <div class="citation-card">
+            <div class="citation-text">
+                “{{ citation.texte }}”
+            </div>
+
+            <div class="citation-author">
+                — {{ citation.auteur }}
+            </div>
+
+            <div class="citation-details">
+                {% if citation.genre %}
+                    <div class="detail-item">
+                        <strong>Genre</strong>
+                        <span class="badge">{{ citation.genre.value }}</span>
+                    </div>
+                {% endif %}
+
+                {% if citation.type %}
+                    <div class="detail-item">
+                        <strong>Type</strong>
+                        <span class="badge">{{ citation.type }}</span>
+                    </div>
+                {% endif %}
+
+                {% if citation.source %}
+                    <div class="detail-item">
+                        <strong>Source</strong>
+                        <span>{{ citation.source }}</span>
+                    </div>
+                {% endif %}
+
+                {% if citation.dateCitation %}
+                    <div class="detail-item">
+                        <strong>Date de la citation</strong>
+                        <span>{{ citation.dateCitation|date('d/m/Y') }}</span>
+                    </div>
+                {% endif %}
+
+                {% if citation.dateAjout %}
+                    <div class="detail-item">
+                        <strong>Date d'ajout</strong>
+                        <span>{{ citation.dateAjout|date('d/m/Y') }}</span>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="citation-actions">
+                <a href="{{ path('app_citation_edit', {'id': citation.id}) }}" class="btn btn-edit">Modifier</a>
+                <a href="{{ path('app_citation_delete', {'id': citation.id}) }}" class="btn btn-delete">Supprimer</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

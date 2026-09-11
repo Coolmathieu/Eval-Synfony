@@ -1,16 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Liste des Citations{% endblock %}
+{% block title %}Voir la Citations{% endblock %}
 
 {% block body %}
-    <h1>Liste des Citations</h1>
+    <h1>Voir la Citations</h1>
 
-    <a href="{{ path('app_citation_new') }}">Ajouter une citation</a>
+    <a href="{{ path('app_citation_index') }}">Retour à la liste de citation</a>
 
     <ul>
-        {% for citation in citations %}
             <li>
-                <strong><a href="{{ path('app_citation_show', {id: citation.id}) }}">{{ citation.texte }}</a>»</strong> — <em>{{ citation.auteur }}</em>
+                <strong>« {{ citation.texte }} »</strong> — <em>{{ citation.auteur }}</em>
 
                 {% if citation.genre %}
                     <small> - {{ citation.genre.value }}</small>
@@ -31,8 +30,5 @@
                     <small>ajouté le : ({{ citation.dateAjout|date('d/m/Y') }})</small>
                 {% endif %}
             </li>
-        {% else %}
-            <li>Aucune citation disponible pour l'instant</li>
-        {% endfor %}
     </ul>
 {% endblock %}

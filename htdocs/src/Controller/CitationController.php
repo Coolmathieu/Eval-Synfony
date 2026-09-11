@@ -6,6 +6,7 @@ use App\Entity\Citation;
 use App\Enum\Genre;
 use App\Repository\CitationRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -25,21 +26,38 @@ final class CitationController extends AbstractController
     }
 
     #[Route('/citation/new', name: 'app_citation_new')]
-    public function new(Request $request, CitationManager $entityManager): Response
+    public function new(Request $request, CitationManager $citationManager): Response
     {
         $citation = new Citation();
         $form = $this->createForm(CitationType::class, $citation);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->save($citation);
+            $citationManager->save($citation);
 
             return $this->redirectToRoute('app_citation_index');
         }
+
 
         return $this->render('citation/new.html.twig', [
             'form' => $form,
         ]);
     }
+    #[Route('/delete/{id}', name: 'app_citation_delete', methods: ['POST', 'GET'])]
+    public function delete(Citation $Citation, CitationManager $citationManager): Response
+    {
 
+        $citationManager->remove($Citation);
+
+        return $this->redirectToRoute('app_citation_index');
+    }
+
+    #[Route('/{id}', name: 'app_citation_show', requirements: ['id' => '\d+'], methods: ['GET'])]
+    public function show(#[MapEntity(id: 'id')] Citation $Citation): Response
+    {
+        return $this->render('citation/show.html.twig', [
+            'citation' => $Citation,
+        ]);
+    }
 
 }

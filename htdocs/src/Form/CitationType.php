@@ -10,21 +10,27 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 use App\Enum\Genre;
 class CitationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('texte', TextType::class, [
+            ->add('texte', TextareaType::class, [
                 'label' => 'Citation',
+                'attr' => ['maxlength' => 2000],
             ])
             ->add('auteur', TextType::class, [
                 'label' => 'Auteur',
+                'attr' => ['maxlength' => 255],
             ])
             ->add('source', TextType::class, [
                 'label' => 'Source',
                 'required' => false,
+                'attr' => ['maxlength' => 255],
+
             ])
             ->add('dateCitation', DateType::class, [
                 'label' => 'Date de la citation',
@@ -37,6 +43,7 @@ class CitationType extends AbstractType
             ->add('type', TextType::class, [
                 'label' => 'Type',
                 'required' => false,
+                'attr' => ['maxlength' => 255],
             ])
         ;
     }
